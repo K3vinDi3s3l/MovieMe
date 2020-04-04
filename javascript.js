@@ -1,5 +1,8 @@
-var tasteDiveApiKey = "362316-MovieMe-NN3BYWU6";
+// var tasteDiveApiKey = "362316-MovieMe-NN3BYWU6";
 var tasteDiveQueryUrl = "https://cors-anywhere.herokuapp.com/https://tastedive.com/api/similar?type=movies&k=362316-MovieMe-NN3BYWU6&q=pulp+fiction"
+var movieTitle = "Onward";
+// var omdbApiKey = "14427a54";
+var omdbQueryUrl = "https://www.omdbapi.com/?apikey=14427a54&t=" + movieTitle
 
 //Event handler to capture search field from input box.
 
@@ -27,10 +30,21 @@ function searchTasteDive(tasteDiveQuery){
     method: "GET"
     }).then(function(response) {
     console.log(response); 
+    tasteDiveArray = response;
+    })
+}
+
+//Calls the OMDB API with a constructed URL. Returns an object
+function searchOMDB(OMDBQuery){
+    $.ajax({url: OMDBQuery,
+    method: "GET"
+    }).then(function(response) {
+    console.log(response); 
     })
 }
 
 
 
-
 searchTasteDive(tasteDiveQueryUrl);
+
+searchTasteDive(omdbQueryUrl);

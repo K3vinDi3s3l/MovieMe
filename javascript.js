@@ -6,7 +6,12 @@ var omdbBaseQueryUrl = "https://www.omdbapi.com/?apikey=14427a54&t="
 var returnedMovieArray = [];
 
 //Event handler to capture search field from input box.
+$("#search-movie").on("click", function (movieSearch) {
+    movieSearch.preventDefault();
 
+    var movie = $.trim($("#movie-request").val());
+    console.log(movie)
+})
 //Constructs a Taste Dive query URL from the search field input box
 
 

@@ -1,8 +1,8 @@
 // var tasteDiveApiKey = "362316-MovieMe-NN3BYWU6";
-var tasteDiveQueryUrl = "https://cors-anywhere.herokuapp.com/https://tastedive.com/api/similar?type=movies&k=362316-MovieMe-NN3BYWU6&q=pulp+fiction"
+var tasteDiveBaseQueryUrl = "https://cors-anywhere.herokuapp.com/https://tastedive.com/api/similar?type=movies&k=362316-MovieMe-NN3BYWU6&q=pulp+fiction"
 var movieTitle = "Onward";
 // var omdbApiKey = "14427a54";
-var omdbQueryUrl = "https://www.omdbapi.com/?apikey=14427a54&t=" + movieTitle
+var omdbBaseQueryUrl = "https://www.omdbapi.com/?apikey=14427a54&t=" 
 
 //Event handler to capture search field from input box.
 
@@ -13,8 +13,15 @@ var omdbQueryUrl = "https://www.omdbapi.com/?apikey=14427a54&t=" + movieTitle
 
 
 //Loop to cycle through Taste Dive array and perform OMDB call for each item. Places each item into a returned movies array
+function buildReturnedMovies(mArray){
+for(i=0;i<10;i++){
+    var returnedMovieTitle = mArray.Similiar.Results[i].Name;
 
 
+
+
+}
+}
 //Generates search results page based on poster and title
 
 
@@ -24,27 +31,20 @@ var omdbQueryUrl = "https://www.omdbapi.com/?apikey=14427a54&t=" + movieTitle
 //Generate content page from search results click
 
 
-//Calls the Taste Dive API with a constructed URL. Returns an array of objects
-function searchTasteDive(tasteDiveQuery){
-    $.ajax({url: tasteDiveQuery,
+//Makes an API call and then calls the function in the second argument. Requires a URL as the first argument and function as the second
+function apiCall(apiQuery, apiFunction){
+    $.ajax({url: apiQuery,
     method: "GET"
-    }).then(function(response) {
-    console.log(response); 
-    tasteDiveArray = response;
-    })
+    }).then(apiFunction)
 }
 
-//Calls the OMDB API with a constructed URL. Returns an object
-function searchOMDB(OMDBQuery){
-    $.ajax({url: OMDBQuery,
-    method: "GET"
-    }).then(function(response) {
-    console.log(response); 
-    })
+//Test function
+function testFunction(response){
+    console.log(response);
 }
 
+var tasteDiveQueryUrl = tasteDiveBaseQueryUrl;
+apiCall(tasteDiveQueryUrl, testFunction);
 
-
-searchTasteDive(tasteDiveQueryUrl);
-
-searchTasteDive(omdbQueryUrl);
+var omdbQueryUrl = omdbBaseQueryUrl+movieTitle;
+apiCall(omdbQueryUrl, testFunction);

@@ -3,6 +3,7 @@ var tasteDiveBaseQueryUrl = "https://cors-anywhere.herokuapp.com/https://tastedi
 var movieTitle = "Onward";
 // var omdbApiKey = "14427a54";
 var omdbBaseQueryUrl = "https://www.omdbapi.com/?apikey=14427a54&t=" 
+var returnedMovieArray = [];
 
 //Event handler to capture search field from input box.
 
@@ -18,10 +19,20 @@ for(i=0;i<10;i++){
     returnedMovies = response;
     var returnedMovieTitle = returnedMovies.Similar.Results[i].Name;
     console.log(returnedMovieTitle);
+    var omdbQueryUrl = omdbBaseQueryUrl + returnedMovieTitle;
+    apiCall(omdbQueryUrl, buildMovieArray);
 
 
 
 }
+}
+
+function buildMovieArray(response){
+    returnedMovie = response;
+    console.log(returnedMovie);
+    returnedMovieArray.push(returnedMovie);
+
+
 }
 //Generates search results page based on poster and title
 

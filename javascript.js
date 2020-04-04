@@ -13,10 +13,11 @@ var omdbBaseQueryUrl = "https://www.omdbapi.com/?apikey=14427a54&t="
 
 
 //Loop to cycle through Taste Dive array and perform OMDB call for each item. Places each item into a returned movies array
-function buildReturnedMovies(mArray){
+function buildReturnedMovies(response){
 for(i=0;i<10;i++){
-    var returnedMovieTitle = mArray.Similiar.Results[i].Name;
-
+    returnedMovies = response;
+    var returnedMovieTitle = returnedMovies.Similar.Results[i].Name;
+    console.log(returnedMovieTitle);
 
 
 
@@ -44,7 +45,7 @@ function testFunction(response){
 }
 
 var tasteDiveQueryUrl = tasteDiveBaseQueryUrl;
-apiCall(tasteDiveQueryUrl, testFunction);
+apiCall(tasteDiveQueryUrl, buildReturnedMovies);
 
 var omdbQueryUrl = omdbBaseQueryUrl+movieTitle;
 apiCall(omdbQueryUrl, testFunction);

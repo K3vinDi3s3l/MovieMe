@@ -1,5 +1,5 @@
 var tasteDiveApiKey = "362316-MovieMe-NN3BYWU6";
-var tasteDiveQueryUrl = "https://cors-anywhere.herokuapp.com/https://tastedive.com/api/similar?q=
+var tasteDiveQueryUrl = "https://cors-anywhere.herokuapp.com/https://tastedive.com/api/similar?type=movies&k=362316-MovieMe-NN3BYWU6&q=pulp+fiction"
 
 //Event handler to capture search field from input box.
 
@@ -19,7 +19,6 @@ var tasteDiveQueryUrl = "https://cors-anywhere.herokuapp.com/https://tastedive.c
 
 
 //Generate content page from search results click
-
 
 
 //Calls the Taste Dive API with a constructed URL. Returns an array of objects

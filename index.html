@@ -1,73 +1,78 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-  <!--Import Google Icon Font-->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!--Import materialize.css-->
-  <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" />
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!--Let browser know website is optimized for mobile-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
-
-<body class="grey lighten-2">
-
-  <!--Navigation Bar-->
-  <header>
-    <ul id="genre-drop" class="dropdown-content">
-      <li><a href="#!">Action</a></li>
-      <li><a href="#!">Crime</a></li>
-      <li><a href="#!">Horror</a></li>
-      <li><a href="#!">Sci-Fi</a></li>
-      <li><a href="#!">Thriller</a></li>
-      <li><a href="#!">Drama</a></li>
-    </ul>
-    <nav class="teal lighten-2">
-      <div class="nav-wrapper container">
-        <a href="#" class="brand-logo  black-text ">Movie<i class="material-icons">play_circle_filled</i>Me</a>
-         
-        <a href="#" class="sidenav-trigger" data-target="mobile-nav">
-          <i class="material-icons ">menu</i>
-          
-        </a>
-
-
-        <ul class="right hide-on-med-and-down">
-          <li><a class="black-text" href="#">Home</a></li>
-          <li><a class=" black-text" href="#">Movies</a></li>
-          <li><a class="dropdown-button black-text" href="#!" data-target="genre-drop">Genre<i
-                 class="material-icons right">arrow_drop_down</i></a></li>
-
-
-          <!--Search bar in nav-->
-          <li>
-            <div class="center row">
-              <div class="col s12 ">
-                <div class="row" id="topbarsearch">
-                  <div class="input-field col s6 s12 black-text">
-                    <i class="pink-text material-icons prefix">search</i>
-                    <input type="text" placeholder="search" id="autocomplete-input" class="autocomplete -text">
+  <head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" />
+    
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!--style.css-->
+    <link href="css/style.css" rel="stylesheet">
+  
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
+      
+  </head>
+  
+  <body class="grey lighten-2">
+  
+    <!--Navigation Bar-->
+    <header>
+      <ul id="drop-genre" class="dropdown-content">
+        <li><a href="#!" style="font-family:Impact">Action</a></li>
+        <li><a href="#!" style="font-family:Impact">Crime</a></li>
+        <li><a href="#!" style="font-family:Impact">Horror</a></li>
+        <li><a href="#!" style="font-family:Impact">Sci-Fi</a></li>
+        <li><a href="#!" style="font-family:Impact">Thriller</a></li>
+        <li><a href="#!" style="font-family:Impact">Drama</a></li>
+      </ul>
+  
+      <nav class="teal lighten-2">
+        <div class="nav-wrapper container">
+          <a href="#" class="brand-logo  black-text ">Movie<i class="material-icons">play_circle_filled</i>Me</a>
+          <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            
+  
+          <ul class="right hide-on-med-and-down">
+            <li><a class="black-text" style="font-family:Impact" href="#!">Home</a></li>
+            <li><a class=" black-text" style="font-family:Impact" href="movies.html">Movies</a></li>
+            <li><a class="dropdown-trigger black-text" style="font-family:Impact" href="#!" data-target="drop-genre">Genre<i
+                   class="material-icons right">arrow_drop_down</i></a></li>
+  
+  
+            <!--Search bar in nav-->
+            <li>
+              <div class="center row">
+                <div class="col s12 ">
+                  <div class="row" id="topbarsearch">
+                    <div class="input-field col s6 s12 black-text">
+                      <i class="pink-text material-icons prefix">search</i>
+                      <input type="text" placeholder="search" id="autocomplete-input" class="autocomplete -text">
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
-
-
-    <!--Nav for mobile view-->
-    <ul class="sidenav" id="mobile-nav">
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Movie</a></li>
-      <li><a href="#">Genre</a></li>
-    </ul>
-  </header>
+            </li>
+          </ul>
+        </div>
+      </nav>
+  
+  
+  
+      <!--Nav for mobile view-->
+      <ul class="sidenav" id="mobile-nav">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Movies</a></li>
+        <li><a href="#">Genre</a></li>
+      </ul>
+    </header>
 
 
   <main class="valign-wrapper">
@@ -75,7 +80,7 @@
 
     <!--Main page search bar-->
     <div class="container ">
-      <h1 class="center-align"><i class="medium material-icons">play_circle_filled</i>MovieMe</h1>
+      <h1 class="center-align" style="font-family:Impact">Movie<i class="medium material-icons">play_circle_filled</i>Me</h1>
       <nav>
         <div class="nav-wrapper">
           <form class="grey lighten-3">
@@ -112,6 +117,7 @@
   <!--JavaScript at end of body for optimized loading-->
 
   <script type="text/javascript" src="js/materialize.js"></script>
+  <script type="text/javascript" src="js/init.js"></script>
 </body>
 
 </html>

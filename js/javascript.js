@@ -1,5 +1,7 @@
 // var tasteDiveApiKey = "362316-MovieMe-NN3BYWU6";
 var tasteDiveBaseQueryUrl = "https://cors-anywhere.herokuapp.com/https://tastedive.com/api/similar?type=movies&k=362316-MovieMe-NN3BYWU6&q="
+// var tasteDiveBaseQueryUrl = "https://tastedive.com/api/similar?type=movies&k=362316-MovieMe-NN3BYWU6&q="
+
 var movieTitle = "Onward";
 // var omdbApiKey = "14427a54";
 var omdbBaseQueryUrl = "https://www.omdbapi.com/?apikey=14427a54&t="
@@ -13,7 +15,7 @@ $('#search').keypress(function (event) {
         var movie = $.trim($("#search").val());
         var tasteDiveQueryUrl = tasteDiveBaseQueryUrl + movie;
         apiCall(tasteDiveQueryUrl, buildReturnedMovies);
-        window.location = "movies.html";
+
     }
 })
 
@@ -23,8 +25,12 @@ $(window).on('load', function () {
     if (window.document.title == "MovieMe - Results") {
         console.log('loaded')
         returnedMovieArray = JSON.parse(sessionStorage.getItem('movieMeMovieArray'));
+        loadSearchResults();
     }
 })
+
+
+
 
 //Event handler to capture search field from input box.
 $("#search-movie").on("click", function (movieSearch) {
@@ -58,11 +64,16 @@ function buildMovieArray(response) {
     console.log(returnedMovie);
     returnedMovieArray.push(returnedMovie);
     sessionStorage.setItem("movieMeMovieArray", JSON.stringify(returnedMovieArray));
-
+    window.location = "movies.html";
 
 }
 //Generates search results page based on poster and title
-
+function loadSearchResults() {
+    for (i = 0; i < 8; i++) {
+        $(".container").eq(1).find("img").eq(i).attr('src', returnedMovieArray[i].Poster)
+        $(".container").eq(1).find(".card-content").eq(i).text(returnedMovieArray[i].Title)
+    }
+}
 
 //Event handler for search results click
 
@@ -83,8 +94,8 @@ function testFunction(response) {
     console.log(response);
 }
 
-// var tasteDiveQueryUrl = tasteDiveBaseQueryUrl;
-// apiCall(tasteDiveQueryUrl, buildReturnedMovies);
+var tasteDiveQueryUrl = tasteDiveBaseQueryUrl+movieTitle
+apiCall(tasteDiveQueryUrl, buildReturnedMovies);
 
-// var omdbQueryUrl = omdbBaseQueryUrl+movieTitle;
-// apiCall(omdbQueryUrl, testFunction);
+var omdbQueryUrl = omdbBaseQueryUrl+movieTitle;
+apiCall(omdbQueryUrl, testFunction);

@@ -74,8 +74,6 @@ function buildMovieArray(response) {
     if (returnedMovieArray.length>=8){
         window.location = "movies.html"
     }
-    
-
 }
 //Generates search results page based on poster and title
 function loadSearchResults() {
@@ -92,12 +90,7 @@ function loadSearchResults() {
 
 //Generate content page from search results click
 
-function apiCallPromise(apiQuery, apiFunction, promiseFunction){
-        $.ajax({
-            url: apiQuery,
-            method: "GET"
-        }).then(apiFunction).then(promiseFunction)
-}
+
 
 
 //Makes an API call and then calls the function in the second argument. Requires a URL as the first argument and function as the second

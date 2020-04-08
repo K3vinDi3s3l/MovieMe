@@ -12,12 +12,15 @@ var returnedMovieArray = [];
 $('#search').keypress(function (event) {
     if (event.keyCode == 13) {
         event.preventDefault();
+        sessionStorage.removeItem("movieMeMovieArray")
         var movie = $.trim($("#search").val());
         var tasteDiveQueryUrl = tasteDiveBaseQueryUrl + movie;
+        console.log(tasteDiveQueryUrl)
         apiCall(tasteDiveQueryUrl, buildReturnedMovies);
 
     }
 })
+
 
 //Loads content once the movies page loads.
 
@@ -26,6 +29,10 @@ $(window).on('load', function () {
         console.log('loaded')
         returnedMovieArray = JSON.parse(sessionStorage.getItem('movieMeMovieArray'));
         loadSearchResults();
+    }
+    if(window.document.title == "MovieMe - Homepage") {
+        // returnedMovieArray = [];
+        console.log("homepage");
     }
 })
 
@@ -53,18 +60,21 @@ function buildReturnedMovies(response) {
         console.log(returnedMovieTitle);
         var omdbQueryUrl = omdbBaseQueryUrl + returnedMovieTitle;
         apiCall(omdbQueryUrl, buildMovieArray);
-
-
-
     }
+
+    //  window.location = "movies.html";
 }
+
 
 function buildMovieArray(response) {
     returnedMovie = response;
     console.log(returnedMovie);
     returnedMovieArray.push(returnedMovie);
     sessionStorage.setItem("movieMeMovieArray", JSON.stringify(returnedMovieArray));
-    window.location = "movies.html";
+    if (returnedMovieArray.length>=8){
+        window.location = "movies.html"
+    }
+    
 
 }
 //Generates search results page based on poster and title
@@ -75,10 +85,19 @@ function loadSearchResults() {
     }
 }
 
+
+
 //Event handler for search results click
 
 
 //Generate content page from search results click
+
+function apiCallPromise(apiQuery, apiFunction, promiseFunction){
+        $.ajax({
+            url: apiQuery,
+            method: "GET"
+        }).then(apiFunction).then(promiseFunction)
+}
 
 
 //Makes an API call and then calls the function in the second argument. Requires a URL as the first argument and function as the second
@@ -94,8 +113,8 @@ function testFunction(response) {
     console.log(response);
 }
 
-var tasteDiveQueryUrl = tasteDiveBaseQueryUrl+movieTitle
-apiCall(tasteDiveQueryUrl, buildReturnedMovies);
+// var tasteDiveQueryUrl = tasteDiveBaseQueryUrl+movieTitle
+// apiCall(tasteDiveQueryUrl, buildReturnedMovies);
 
-var omdbQueryUrl = omdbBaseQueryUrl+movieTitle;
-apiCall(omdbQueryUrl, testFunction);
+// var omdbQueryUrl = omdbBaseQueryUrl+movieTitle;
+// apiCall(omdbQueryUrl, testFunction);

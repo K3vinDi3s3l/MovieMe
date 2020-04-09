@@ -1,12 +1,12 @@
 // var tasteDiveApiKey = "362316-MovieMe-NN3BYWU6";
 var tasteDiveBaseQueryUrl = "https://cors-anywhere.herokuapp.com/https://tastedive.com/api/similar?type=movies&k=362316-MovieMe-NN3BYWU6&q="
 // var tasteDiveBaseQueryUrl = "https://tastedive.com/api/similar?type=movies&k=362316-MovieMe-NN3BYWU6&q="
-
+var test = "";
 var movieTitle = "Onward";
 // var omdbApiKey = "14427a54";
 var omdbBaseQueryUrl = "https://www.omdbapi.com/?apikey=14427a54&t="
 var returnedMovieArray = [];
-
+var contentMovieChoice = [];
 //Keybind for enter key in search box
 
 $('#search').keypress(function (event) {
@@ -28,11 +28,32 @@ $(window).on('load', function () {
     if (window.document.title == "MovieMe - Results") {
         console.log('loaded')
         returnedMovieArray = JSON.parse(sessionStorage.getItem('movieMeMovieArray'));
-        loadSearchResults();
+        if (returnedMovieArray != null) {
+            $("#content").attr("class", "container");
+            $("#no-content").attr("class", "container hide");
+            loadSearchResults();
+        }
+        else {
+            $("#no-content").attr("class", "container");
+            $("#content").attr("class", "container hide");
+        }
     }
-    if(window.document.title == "MovieMe - Homepage") {
+    else if (window.document.title == "MovieMe - Homepage") {
         // returnedMovieArray = [];
         console.log("homepage");
+    }
+    else if (window.document.title == "MovieMe - Content") {
+        contentMovieChoice = JSON.parse(sessionStorage.getItem('movieMeMovieChoice'));
+        if (contentMovieChoice != null) {
+            $("#content").attr("class", "container");
+            $("#no-content").attr("class", "container hide");
+            loadMovieContent();
+        }
+        else {
+            $("#no-content").attr("class", "container");
+            $("#content").attr("class", "container hide");
+
+        }
     }
 })
 
@@ -61,8 +82,6 @@ function buildReturnedMovies(response) {
         var omdbQueryUrl = omdbBaseQueryUrl + returnedMovieTitle;
         apiCall(omdbQueryUrl, buildMovieArray);
     }
-
-    //  window.location = "movies.html";
 }
 
 
@@ -71,16 +90,22 @@ function buildMovieArray(response) {
     console.log(returnedMovie);
     returnedMovieArray.push(returnedMovie);
     sessionStorage.setItem("movieMeMovieArray", JSON.stringify(returnedMovieArray));
-    if (returnedMovieArray.length>=8){
+    if (returnedMovieArray.length >= 8) {
         window.location = "movies.html"
     }
 }
 //Generates search results page based on poster and title
 function loadSearchResults() {
     for (i = 0; i < 8; i++) {
-        $(".container").eq(1).find("img").eq(i).attr('src', returnedMovieArray[i].Poster)
-        $(".container").eq(1).find(".card-content").eq(i).text(returnedMovieArray[i].Title)
+        $("#content").find("img").eq(i).attr('src', returnedMovieArray[i].Poster);
+        $("#content").find("img").eq(i).attr('data', i);
+        $("#content").find(".card-content").eq(i).text(returnedMovieArray[i].Title);
     }
+    $('#content img').on('click', function () {
+        event.preventDefault();
+        loadContentPage(event);
+
+    })
 }
 
 
@@ -89,7 +114,25 @@ function loadSearchResults() {
 
 
 //Generate content page from search results click
+function loadContentPage(event) {
+    test = event;
+    var posterChoice = event.target.getAttribute('data');
+    var movieChoice = returnedMovieArray[posterChoice];
+    console.log(movieChoice);
+    sessionStorage.setItem('movieMeMovieChoice', JSON.stringify(movieChoice));
+    window.location = "content.html"
+}
 
+function loadMovieContent() {
+    console.log("content function")
+    $('#content').find('.poster').attr('src', contentMovieChoice.Poster);
+    $('#content').find('h1').text(contentMovieChoice.Title);
+    $('#content').find('.description').text(contentMovieChoice.Plot);
+    for (i = 0; i < 3; i++) {
+        $("#ratings-list").find("li").eq(i).text(contentMovieChoice.Ratings[i].Source + ": " + contentMovieChoice.Ratings[i].Value);
+
+    }
+}
 
 
 

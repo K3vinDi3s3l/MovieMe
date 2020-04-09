@@ -1,0 +1,17 @@
+#col-1 {
+    position: fixed;
+    width: 50%;
+    float: left;
+    height: 100%;
+
+    z-index: 1010101010
+  }
+  
+  #col-2 {
+    position: fixed;
+    width: 50%;
+    float: right;
+    height: 100%;
+   
+    z-index: 1010101010
+  }

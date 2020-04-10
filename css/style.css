@@ -26,3 +26,21 @@ i.material-icons {
        
         z-index: 1010101010
       }
+
+      #videos-container {
+        overflow: hidden;
+        padding-top: 0%;
+        position: static;
+      }
+       
+      #videos-container {
+         border: 0;
+         height: 100%;
+         left: 0;
+         position: static;
+         top: 0;
+         width: 100%;
+      }
+      #videos-container-4x3 {
+        padding-top: 0%;
+      }

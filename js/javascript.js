@@ -29,13 +29,13 @@ $(window).on('load', function () {
         console.log('loaded')
         returnedMovieArray = JSON.parse(sessionStorage.getItem('movieMeMovieArray'));
         if (returnedMovieArray != null) {
-            $("#content").attr("class", "container");
-            $("#no-content").attr("class", "container hide");
+            $("#content").attr("style", "display:block");
+            $("#no-content").attr("style", "display: none");
             loadSearchResults();
         }
         else {
-            $("#no-content").attr("class", "container");
-            $("#content").attr("class", "container hide");
+            $("#no-content").attr("style", "display:block");
+            $("#content").attr("style", "display:none");
         }
     }
     else if (window.document.title == "MovieMe - Homepage") {
@@ -45,13 +45,13 @@ $(window).on('load', function () {
     else if (window.document.title == "MovieMe - Content") {
         contentMovieChoice = JSON.parse(sessionStorage.getItem('movieMeMovieChoice'));
         if (contentMovieChoice != null) {
-            $("#content").attr("class", "container");
-            $("#no-content").attr("class", "container hide");
+            $("#content").attr("style", "display:block");
+            $("#no-content").attr("style", "display: none");
             loadMovieContent();
         }
         else {
-            $("#no-content").attr("class", "container");
-            $("#content").attr("class", "container hide");
+            $("#no-content").attr("style", "display:block");
+            $("#content").attr("style", "display:none");
 
         }
     }

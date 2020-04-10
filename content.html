@@ -1,117 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <!--Import Google Icon Font-->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <head>
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-  <!--Import materialize.css-->
-  <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" />
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" />
 
-  <!--Let browser know website is optimized for mobile-->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="css/style.css" rel="stylesheet">
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
-
-
-  <title>MovieMe - Content</title>
-</head>
-
-<body>
-  <header>
-    <ul id="drop-genre" class="dropdown-content">
-      <li><a href="#!" style="font-family:Impact">Action</a></li>
-      <li><a href="#!" style="font-family:Impact">Crime</a></li>
-      <li><a href="#!" style="font-family:Impact">Horror</a></li>
-      <li><a href="#!" style="font-family:Impact">Sci-Fi</a></li>
-      <li><a href="#!" style="font-family:Impact">Thriller</a></li>
-      <li><a href="#!" style="font-family:Impact">Drama</a></li>
-    </ul>
-
-    <ul id="mobile-drop" class="dropdown-content">
-      <li><a href="#!" style="font-family:Impact">Action</a></li>
-      <li><a href="#!" style="font-family:Impact">Crime</a></li>
-      <li><a href="#!" style="font-family:Impact">Horror</a></li>
-      <li><a href="#!" style="font-family:Impact">Sci-Fi</a></li>
-      <li><a href="#!" style="font-family:Impact">Thriller</a></li>
-      <li><a href="#!" style="font-family:Impact">Drama</a></li>
-    </ul>
-
-    <nav class="teal lighten-2">
-      <div class="nav-wrapper container">
-        <a href="#" class="brand-logo  black-text ">Movie<i class="material-icons">play_circle_filled</i>Me</a>
-        <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css/style.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" type="text/javascript"></script>
 
 
-        <ul class="right hide-on-med-and-down">
-          <li><a class="black-text" style="font-family:Impact" href="index.html">Home</a></li>
-          <li><a class=" black-text" style="font-family:Impact" href="#">Movies</a></li>
-          <li><a class="dropdown-trigger black-text" style="font-family:Impact" href="#!"
-              data-target="drop-genre">Genre<i class="material-icons right">arrow_drop_down</i></a></li>
+    <title>MovieMe - Content</title>
+  </head>
+
+  <body>
+    <header>
+      <ul id="drop-genre" class="dropdown-content">
+        <li><a href="#!" style="font-family:Impact">Action</a></li>
+        <li><a href="#!" style="font-family:Impact">Crime</a></li>
+        <li><a href="#!" style="font-family:Impact">Horror</a></li>
+        <li><a href="#!" style="font-family:Impact">Sci-Fi</a></li>
+        <li><a href="#!" style="font-family:Impact">Thriller</a></li>
+        <li><a href="#!" style="font-family:Impact">Drama</a></li>
+      </ul>
+
+      <ul id="mobile-drop" class="dropdown-content">
+        <li><a href="#!" style="font-family:Impact">Action</a></li>
+        <li><a href="#!" style="font-family:Impact">Crime</a></li>
+        <li><a href="#!" style="font-family:Impact">Horror</a></li>
+        <li><a href="#!" style="font-family:Impact">Sci-Fi</a></li>
+        <li><a href="#!" style="font-family:Impact">Thriller</a></li>
+        <li><a href="#!" style="font-family:Impact">Drama</a></li>
+      </ul>
+
+      <nav class="teal lighten-2">
+        <div class="nav-wrapper container">
+          <a href="movies.html" class="brand-logo  black-text ">Movie<i class="material-icons">play_circle_filled</i>Me</a>
+          <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
 
-          <!--Search bar in nav-->
-          <li>
-            <div class="center row">
-              <div class="col s12 ">
-                <div class="row" id="topbarsearch">
-                  <div class="input-field col s6 s12 black-text">
-                    <i class="pink-text material-icons prefix">search</i>
-                    <input type="text" placeholder="search" id="autocomplete-input" class="autocomplete -text">
+          <ul class="right hide-on-med-and-down">
+            <li><a class="black-text" style="font-family:Impact" href="index.html">Home</a></li>
+            <li><a class=" black-text" style="font-family:Impact" href="movies.html">Movies</a></li>
+            <li><a class="dropdown-trigger black-text" style="font-family:Impact" href="#!"
+                data-target="drop-genre">Genre<i class="material-icons right">arrow_drop_down</i></a></li>
+
+
+            <!--Search bar in nav-->
+            <li>
+              <div class="center row">
+                <div class="col s12 ">
+                  <div class="row" id="topbarsearch">
+                    <div class="input-field col s6 s12 black-text">
+                      <i class="pink-text material-icons prefix">search</i>
+                      <input type="text" placeholder="search" id="autocomplete-input" class="autocomplete -text">
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </li>
-        </ul>
-      </div>
-    </nav>
+            </li>
+          </ul>
+        </div>
+      </nav>
 
 
 
-    <!--Nav for mobile view-->
-    <ul class="sidenav" id="mobile-nav">
-      <li><a class="black-text" style="font-family:Impact" href="#!">Home</a></li>
-      <li><a class=" black-text" style="font-family:Impact" href="movies.html">Movies</a></li>
-      <li><a class="dropdown-trigger black-text" style="font-family:Impact" href="content.html"
-          data-target="mobile-drop">Genre<i class="material-icons right">arrow_drop_down</i></a></li>
-    </ul>
-  </header>
-  <br>
+      <!--Nav for mobile view-->
+      <ul class="sidenav" id="mobile-nav">
+        <li><a class="black-text" style="font-family:Impact" href="#!">Home</a></li>
+        <li><a class=" black-text" style="font-family:Impact" href="movies.html">Movies</a></li>
+        <li><a class="dropdown-trigger black-text" style="font-family:Impact" href="content.html"
+            data-target="mobile-drop">Genre<i class="material-icons right">arrow_drop_down</i></a></li>
+      </ul>
+    </header>
+    <br>
+    <main class="valign-wrapper">
 
-  <div class="container" id="no-content">
-    <div class="row">
-      <h5 class="center-align">No selection has been made. Please return to the home screen to complete your search</h5>
-    </div>
-  </div>
-
-  <div class="container" id="content" style="display:none">
-    <div class="row">
-
-      <div class="col l6">
-        <div style="position: relative;">
-          <img style="width: 300px; height: 400px;" class="poster" src=" placeholder.jpg">
-          <h1 style="text-decoration: underline;" class="title">Movie Title</h1>
-          <p class="description">Movie description goes here</p>
-          <br>
-          <div>
-            <b>Ratings & Reviews</b>
-            <div>
-              <img style="width: 100px; height: 20px;" class="youtube" src="ratings.jpg">
-            </div>
-            <div>
-              <p class="ratings">
-                <ul id="ratings-list">
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                </ul>
-              </p>
-            </div>
-          </div>
+      <div class="container" id="no-content">
+        <div class="row">
+          <h5 class="center-align">No selection has been made. Please return to the home screen to complete your search</h5>
         </div>
       </div>
+      <div class="container" id="content" style="display:none">
+        <div class="row">
 
+          <div class="col l6">
+            <div style="position: relative;">
+              <img style="width: 300px; height: 400px;" class="poster" src=" placeholder.jpg">
+              <h1 style="text-decoration: underline;" class="title">Movie Title</h1>
+              <p class="description">Movie description goes here</p>
+              <br>
+              <div>
+                <b>Ratings & Reviews</b>
+                <div>
+                  <img style="width: 100px; height: 20px;" class="youtube" src="ratings.jpg">
+                </div>
+                <div>
+                  <p class="ratings">
+                    <ul id="ratings-list">
+                      <li></li>
+                      <li></li>
+                      <li></li>
+                    </ul>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
       <div class="col l6">
         <div style="position: relative;">
           <span id="videos-container">
@@ -126,6 +125,7 @@
     <div class="container">
       <div class="row">
         <div class="footer-copyright teal lighten-2">
+
         </div>
       </div>
     </div>
@@ -133,10 +133,12 @@
 
 
 
-  <script type="text/javascript" src="js/materialize.js"></script>
+
+\  <script type="text/javascript" src="js/materialize.js"></script>
   <script type="text/javascript" src="js/init.js"></script>
   <script type="text/javascript" src="js/javascript.js"></script>
   <script type="text/javascript" src="js/tmdb.js"></script>
 </body>
+
 
 </html>

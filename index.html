@@ -49,14 +49,12 @@
         <a href="#" class="brand-logo  black-text ">Movie<i class="material-icons">play_circle_filled</i>Me</a>
         <a href="#" data-target="mobile-nav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
-
         <ul class="right hide-on-med-and-down">
           <li><a class="black-text" style="font-family:Impact" href="#!">Home</a></li>
           <li><a class=" black-text" style="font-family:Impact" href="movies.html">Movies</a></li>
+          <!-- Reserved for disabled elements -->
           <!-- <li><a class="dropdown-trigger black-text" style="font-family:Impact" href="#!"
               data-target="mobile-drop">Genre<i class="material-icons right">arrow_drop_down</i></a></li> -->
-
-
           <!--Search bar in nav-->
           <!-- <li>
             <div class="center row">
@@ -69,17 +67,16 @@
                 </div>
               </div>
             </div>
-          </li>
+          </li> -->
         </ul>
       </div>
-    </nav> -->
-
-
+    </nav>
 
     <!--Nav for mobile view-->
     <ul class="sidenav" id="mobile-nav">
-      <li><a class="black-text" style="font-family:Impact" href="#!">Home</a></li>
+      <li><a class="black-text" style="font-family:Impact" href="#">Home</a></li>
       <li><a class=" black-text" style="font-family:Impact" href="movies.html">Movies</a></li>
+      <!-- Reserved for disabled elements -->
       <!-- <li><a class="dropdown-trigger black-text" style="font-family:Impact" href="content.html"
           data-target="drop-genre">Genre<i class="material-icons right">arrow_drop_down</i></a></li> -->
     </ul>
@@ -97,26 +94,18 @@
   </div>
 
   <main class="valign-wrapper">
-
-
     <!--Main page search bar-->
     <div class="container ">
-      
       <div class="row">
         <div class = "col s12">
-         
           <h1 class="center-align" style="font-family:Impact">Movie<i class="medium material-icons">play_circle_filled</i>Me <button data-target="information" class="btn-flat modal-trigger center-align"><i class="material-icons large">info</i></button>
           </h1>
           <nav>
-            
             <div class="nav-wrapper">
-              
               <form class="grey lighten-3">
                 <div class="input-field">
                   <input id="search" type="search" required>
                   <label for="search"><i class="material-icons pink-text">search</i></label>
-
-
                   <!-- I've put "red-text" class to emphasize -->
                   <i class="material-icons pink-text">close</i>
                 </div>    
@@ -125,8 +114,9 @@
           </nav>
         </div>
       </div>
+      <!-- Container for saved searches -->
       <div class = "row" id="savedSearches">
-        <div class = "col l2" style="display:none">
+        <div class = "col s6 l2" style="display:none">
           <p>
             <label for="box1">
               <input type="checkbox" id="box1"/>
@@ -134,7 +124,7 @@
             </label>
           </p>
         </div>
-        <div class = "col l2" style="display:none">
+        <div class = "col s6 l2" style="display:none">
           <p>
             <label>
               <input type="checkbox" />
@@ -142,7 +132,7 @@
             </label>
           </p>
         </div>
-        <div class = "col l2" style="display:none">
+        <div class = "col s6 l2" style="display:none">
           <p>
             <label>
               <input type="checkbox" />
@@ -150,7 +140,7 @@
             </label>
           </p>
         </div>
-        <div class = "col l2" style="display:none">
+        <div class = "col s6 l2" style="display:none">
           <p>
             <label>
               <input type="checkbox" />
@@ -158,7 +148,7 @@
             </label>
           </p>
         </div>
-        <div class = "col l2" style="display:none">
+        <div class = "col s6 l2" style="display:none">
           <p>
             <label>
               <input type="checkbox" />
@@ -166,7 +156,7 @@
             </label>
           </p>
         </div>
-        <div class = "col l2" style="display:none">
+        <div class = "col s6 l2" style="display:none">
           <p>
             <label>
               <input type="checkbox" />
@@ -195,7 +185,6 @@
 
 
   <!--JavaScript at end of body for optimized loading-->
-
   <script type="text/javascript" src="js/materialize.js"></script>
   <script type="text/javascript" src="js/init.js"></script>
   <script type="text/javascript" src="js/javascript.js"></script>

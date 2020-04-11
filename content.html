@@ -5,8 +5,7 @@
 <head>
   <!--Import Google Icon Font-->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Candal&family=Viga&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bevan&display=swap" rel="stylesheet">
   <!--Import materialize.css-->
   <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" />
   <!--Let browser know website is optimized for mobile-->
@@ -42,6 +41,7 @@
         <ul class="right hide-on-med-and-down">
           <li><a class="black-text" style="font-family:Impact" href="index.html">Home</a></li>
           <li><a class=" black-text" style="font-family:Impact" href="movies.html">Movies</a></li>
+          <!-- Reserved for disabled elements -->
           <!-- <li><a class="dropdown-trigger black-text" style="font-family:Impact" href="#!"
               data-target="drop-genre">Genre<i class="material-icons right">arrow_drop_down</i></a></li> -->
           <!--Search bar in nav-->
@@ -56,15 +56,15 @@
                 </div>
               </div>
             </div>
-          </li>
+          </li> -->
         </ul>
-      </div> -->
-
+      </div>
     </nav>
     <!--Nav for mobile view-->
     <ul class="sidenav" id="mobile-nav">
-      <li><a class="black-text" style="font-family:Impact" href="#!">Home</a></li>
+      <li><a class="black-text" style="font-family:Impact" href="index.html">Home</a></li>
       <li><a class=" black-text" style="font-family:Impact" href="movies.html">Movies</a></li>
+      <!-- Reserved for disabled elements -->
       <!-- <li><a class="dropdown-trigger black-text" style="font-family:Impact" href="content.html"
           data-target="mobile-drop">Genre<i class="material-icons right">arrow_drop_down</i></a></li> -->
     </ul>
@@ -77,9 +77,10 @@
         </h5>
       </div>
     </div>
+    <!-- Containers for returned movie content -->
     <div class="container" id="content" style="display:none">
       <div class="row">
-        <div class="col s12 l6" style="font-family: 'Times New Roman'">
+        <div class="col s12 l6" style="font-family: 'Bevan', cursive;">
           <div style="position: relative;">
             <img style="width: 300px; height: 400px;" class="poster" src=" placeholder.jpg">
             <h4 style="text-decoration: underline;" class="title">Movie Title</h4>
@@ -127,9 +128,5 @@
     <script type="text/javascript" src="js/materialize.js"></script>
     <script type="text/javascript" src="js/init.js"></script>
     <script type="text/javascript" src="js/javascript.js"></script>
-    <script type="text/javascript" src="js/tmdb.js"></script>
-
 </body>
-
-
 </html>

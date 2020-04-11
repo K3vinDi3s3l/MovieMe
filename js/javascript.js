@@ -155,7 +155,12 @@ function buildMovieArray(response) {
 function loadSearchResults() {
     for (i = 0; i < 8; i++) {
         if(returnedMovieArray[i].Response == "True") {  
-        $("#content").find("img").eq(i).attr('src', returnedMovieArray[i].Poster);
+            if (returnedMovieArray[i].Poster == 'N/A'){
+                $("#content").find("img").eq(i).attr('src', 'assets/movies.gif');
+            }
+            else {
+            $("#content").find("img").eq(i).attr('src', returnedMovieArray[i].Poster);
+        }   
         $("#content").find("img").eq(i).attr('data', i);
         $("#content").find(".card-content h5").eq(i).text(returnedMovieArray[i].Title);
         }
@@ -176,7 +181,12 @@ function loadContentPage(event) {
 
 //Dynamically generates information on the content page
 function loadMovieContent() {
-    $('#content').find('.poster').attr('src', contentMovieChoice.Poster);
+    if (contentMovieChoice.Poster == "N/A") {
+        $('#content').find('.poster').attr('src', 'assets/movies.gif');
+    }
+    else {
+        $('#content').find('.poster').attr('src', contentMovieChoice.Poster);
+    }    
     $('#content').find('h4').text(contentMovieChoice.Title);
     $('#content').find('.rated').text("Rated: " + contentMovieChoice.Rated);
     $('#content').find('.released').text("Released: " + contentMovieChoice.Released);

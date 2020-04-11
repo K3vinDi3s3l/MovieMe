@@ -80,27 +80,27 @@
 Home Page
 
 
-![Home](MovieMe%20Home%20Page%20Screenshot.PNG "Home Screen")
+![Home](screenshots/MovieMe%20Home%20Page%20Screenshot.PNG "Home Screen")
 
 
 
 Search Results
 
 
-![Search](MoveMe%20Results%20Page%20Screenshot.PNG "Search Results")
+![Search](screenshots/MoveMe%20Results%20Page%20Screenshot.PNG "Search Results")
 
 
 
 Content Page 1
 
 
-![Content1](MovieMe%20Content%20Page%20Screenshot.PNG "Content Page 1")
+![Content1](screenshots/MovieMe%20Content%20Page%20Screenshot.PNG "Content Page 1")
 
 
 
 Content Page 2
 
 
-![Content1](MovieMe%20Content%20Page%202%20Screenshot.PNG "Content Page 2")
+![Content1](screenshots/MovieMe%20Content%20Page%202%20Screenshot.PNG "Content Page 2")
 
 

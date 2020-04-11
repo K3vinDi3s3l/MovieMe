@@ -126,8 +126,14 @@ function loadContentPage(event) {
 function loadMovieContent() {
     console.log("content function")
     $('#content').find('.poster').attr('src', contentMovieChoice.Poster);
-    $('#content').find('h1').text(contentMovieChoice.Title);
-    $('#content').find('.description').text(contentMovieChoice.Plot);
+    $('#content').find('h4').text(contentMovieChoice.Title);
+    $('#content').find('.rated').text("Rated: " + contentMovieChoice.Rated);
+    $('#content').find('.released').text("Released: " + contentMovieChoice.Released);
+    $('#content').find('.runtime').text("Runtime: " + contentMovieChoice.Runtime);
+    $('#content').find('.genre').text("Genre: " + contentMovieChoice.Genre);
+    $('#content').find('.director').text("Director: " + contentMovieChoice.Director);
+    $('#content').find('.description').text("Plot: " + contentMovieChoice.Plot);
+        
     for (i = 0; i < 3; i++) {
         $("#ratings-list").find("li").eq(i).text(contentMovieChoice.Ratings[i].Source + ": " + contentMovieChoice.Ratings[i].Value);
 

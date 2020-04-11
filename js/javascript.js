@@ -1,4 +1,4 @@
-var tasteDiveBaseQueryUrl = "https://cors-anywhere.herokuapp.com/https://tastedive.com/api/similar?type=movies&k=362316-MovieMe-NN3BYWU6&q=movie%3A"
+var tasteDiveBaseQueryUrl = "https://cors-anywhere.herokuapp.com/https://tastedive.com/api/similar?type=movies&info=1&k=362316-MovieMe-NN3BYWU6&q=movie%3A"
 var omdbBaseQueryUrl = "https://www.omdbapi.com/?apikey=14427a54&t="
 var returnedMovieArray = [];
 var contentMovieChoice = [];
@@ -121,7 +121,7 @@ function buildReturnedMovies(response) {
         sessionStorage.setItem('movieMeSavedMovieArray', JSON.stringify(savedMovieArray));
         return;
     }
-    for (i = 0; i < 8; i++) {
+    for (i = 0; i < returnedMovies.Similar.Results.length; i++) {
 
         var formattedMovieName = "";
         var returnedMovieTitle = returnedMovies.Similar.Results[i].Name;
@@ -146,6 +146,7 @@ function buildReturnedMovies(response) {
             }
         }
         var omdbQueryUrl = omdbBaseQueryUrl + formattedMovieName;
+        console.log(omdbQueryUrl);
         apiCall(omdbQueryUrl, buildMovieArray);
       
     }
@@ -154,8 +155,10 @@ function buildReturnedMovies(response) {
 
 function buildMovieArray(response) {
     returnedMovie = response;
+    if (returnedMovie.Response != 'False') {
     returnedMovieArray.push(returnedMovie);
     sessionStorage.setItem("movieMeMovieArray", JSON.stringify(returnedMovieArray));
+    }
     if (returnedMovieArray.length >= 8) {
         window.location = "movies.html"
     }

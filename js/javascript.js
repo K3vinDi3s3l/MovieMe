@@ -53,6 +53,7 @@ $('#search').keypress(function (event) {
 //Loads content once the movies page loads.
 
 $(window).on('load', function () {
+    $('.modal').modal();
     M.Toast.dismissAll();
     if (window.document.title == "MovieMe - Results") {
         returnedMovieArray = JSON.parse(sessionStorage.getItem('movieMeMovieArray'));

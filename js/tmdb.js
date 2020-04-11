@@ -27,7 +27,7 @@ $.ajax({
         url: tmdbVideoSearchURL,
         method: "GET"
     }).then(function (videoSearchResponse) {
-
+        console.log(videoSearchResponse);
         //This loop captures all the video keys and stores them in the viedoSearchResults Array which can then be used to populate the content page with Youtube videos.
         for (let i = 0; i < videoSearchResponse.results.length; i++) {
             const videoKey = videoSearchResponse.results[i].key;

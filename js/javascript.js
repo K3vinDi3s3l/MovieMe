@@ -1,21 +1,49 @@
-// var tasteDiveApiKey = "362316-MovieMe-NN3BYWU6";
-var tasteDiveBaseQueryUrl = "https://cors-anywhere.herokuapp.com/https://tastedive.com/api/similar?type=movies&k=362316-MovieMe-NN3BYWU6&q="
-// var tasteDiveBaseQueryUrl = "https://tastedive.com/api/similar?type=movies&k=362316-MovieMe-NN3BYWU6&q="
-var test = "";
-var movieTitle = "Onward";
-// var omdbApiKey = "14427a54";
+var tasteDiveBaseQueryUrl = "https://cors-anywhere.herokuapp.com/https://tastedive.com/api/similar?type=movies&k=362316-MovieMe-NN3BYWU6&q=movie%3A"
 var omdbBaseQueryUrl = "https://www.omdbapi.com/?apikey=14427a54&t="
 var returnedMovieArray = [];
 var contentMovieChoice = [];
+var savedMovieArray = [];
+var savedMovieHolder="";
 //Keybind for enter key in search box
 
 $('#search').keypress(function (event) {
-    if (event.keyCode == 13) {
+    if (event.keyCode == 13 && $("#search").val() !="" ) {
         event.preventDefault();
         sessionStorage.removeItem("movieMeMovieArray")
         var movie = $.trim($("#search").val());
-        var tasteDiveQueryUrl = tasteDiveBaseQueryUrl + movie;
-        console.log(tasteDiveQueryUrl)
+        while (savedMovieArray.length>5) {
+            savedMovieHolder = savedMovieArray[5];
+            savedMovieArray.pop();
+        }
+         savedMovieArray.unshift(movie);
+        sessionStorage.setItem('movieMeSavedMovieArray', JSON.stringify(savedMovieArray));
+        var movieName="";
+        for(i=0;i<movie.length;i++){
+            if (movie[i] == ' '){
+                movieName = movieName+ '%20';
+            }
+            else {
+            movieName = movieName+movie[i];
+            }
+        }
+        var tasteDiveQueryUrl = tasteDiveBaseQueryUrl + movieName;
+        for(i=0;i<4;i++) {
+            var additionalSearchName = "";
+            if ($('#savedSearches input').eq(i)[0].checked == true){
+                var savedSearchName = $('#savedSearches input ~ span').eq(i).text();
+                for(x=0;x<savedSearchName.length;x++){
+                    if (savedSearchName.charCodeAt(x)==32) {
+                        additionalSearchName = additionalSearchName + '%20'
+                    }
+                    else {
+                        additionalSearchName = additionalSearchName + savedSearchName[x];
+                    }
+                }
+                tasteDiveQueryUrl = tasteDiveQueryUrl+'%2Cmovie%3A'+additionalSearchName;
+            }
+                
+        }
+        console.log(tasteDiveQueryUrl);
         apiCall(tasteDiveQueryUrl, buildReturnedMovies);
 
     }
@@ -25,8 +53,8 @@ $('#search').keypress(function (event) {
 //Loads content once the movies page loads.
 
 $(window).on('load', function () {
+    M.Toast.dismissAll();
     if (window.document.title == "MovieMe - Results") {
-        console.log('loaded')
         returnedMovieArray = JSON.parse(sessionStorage.getItem('movieMeMovieArray'));
         if (returnedMovieArray != null) {
             $("#content").attr("style", "display:block");
@@ -40,7 +68,17 @@ $(window).on('load', function () {
     }
     else if (window.document.title == "MovieMe - Homepage") {
         // returnedMovieArray = [];
-        console.log("homepage");
+        savedMovieArray = JSON.parse(sessionStorage.getItem('movieMeSavedMovieArray'));
+        if (savedMovieArray == null){
+            savedMovieArray = [];
+        }
+        else{
+            for (i=0;i<savedMovieArray.length;i++) {
+                $('#savedSearches').find('span').eq(i).text(savedMovieArray[i]);
+                $('#savedSearches .col').eq(i).attr('style', 'display:block');
+
+            }
+        }
     }
     else if (window.document.title == "MovieMe - Content") {
         contentMovieChoice = JSON.parse(sessionStorage.getItem('movieMeMovieChoice'));
@@ -65,29 +103,54 @@ $("#search-movie").on("click", function (movieSearch) {
     movieSearch.preventDefault();
 
     var movie = $.trim($("#movie-request").val());
-    console.log(movie)
 })
-//Constructs a Taste Dive query URL from the search field input box
-
-
-//Adds the search field box input to a searched history array
 
 
 //Loop to cycle through Taste Dive array and perform OMDB call for each item. Places each item into a returned movies array
 function buildReturnedMovies(response) {
-    for (i = 0; i < 10; i++) {
-        returnedMovies = response;
+    returnedMovies = response;
+    if(returnedMovies.Similar.Results.length < 8){
+        M.toast({html: 'No Results Found'});
+        savedMovieArray.shift();
+        if (savedMovieArray.length = 5) {
+        savedMovieArray.push(savedMovieHolder);
+        }
+        sessionStorage.setItem('movieMeSavedMovieArray', JSON.stringify(savedMovieArray));
+        return;
+    }
+    for (i = 0; i < 8; i++) {
+
+        var formattedMovieName = "";
         var returnedMovieTitle = returnedMovies.Similar.Results[i].Name;
-        console.log(returnedMovieTitle);
-        var omdbQueryUrl = omdbBaseQueryUrl + returnedMovieTitle;
+        for(x=0;x<returnedMovieTitle.length;x++) {
+            if (returnedMovieTitle.charCodeAt(x) == 8211) {
+                formattedMovieName = formattedMovieName + '%2D';
+            }
+            else if(returnedMovieTitle.charCodeAt(x) == 58) {
+                formattedMovieName = formattedMovieName + '%3A';
+            }
+            else if(returnedMovieTitle.charCodeAt(x) == 32) {
+                formattedMovieName = formattedMovieName + '%20';
+            }
+            else if(returnedMovieTitle.charCodeAt(x) == 44) {
+                formattedMovieName = formattedMovieName + '%2C';
+            } 
+            else if(returnedMovieTitle.charCodeAt(x) == 38) {
+                formattedMovieName = formattedMovieName + '%26';
+            }         
+            else {
+            formattedMovieName = formattedMovieName + returnedMovieTitle[x];
+            }
+        }
+        var omdbQueryUrl = omdbBaseQueryUrl + formattedMovieName;
         apiCall(omdbQueryUrl, buildMovieArray);
+      
     }
 }
 
 
 function buildMovieArray(response) {
     returnedMovie = response;
-    console.log(returnedMovie);
     returnedMovieArray.push(returnedMovie);
     sessionStorage.setItem("movieMeMovieArray", JSON.stringify(returnedMovieArray));
     if (returnedMovieArray.length >= 8) {
@@ -97,9 +160,11 @@ function buildMovieArray(response) {
 //Generates search results page based on poster and title
 function loadSearchResults() {
     for (i = 0; i < 8; i++) {
+        if(returnedMovieArray[i].Response == "True") {  
         $("#content").find("img").eq(i).attr('src', returnedMovieArray[i].Poster);
         $("#content").find("img").eq(i).attr('data', i);
-        $("#content").find(".card-content").eq(i).text(returnedMovieArray[i].Title);
+        $("#content").find(".card-content h5").eq(i).text(returnedMovieArray[i].Title);
+        }
     }
     $('#content img').on('click', function () {
         event.preventDefault();
@@ -118,14 +183,13 @@ function loadContentPage(event) {
     test = event;
     var posterChoice = event.target.getAttribute('data');
     var movieChoice = returnedMovieArray[posterChoice];
-    console.log(movieChoice);
     sessionStorage.setItem('movieMeMovieChoice', JSON.stringify(movieChoice));
     window.location = "content.html"
 }
 
 function loadMovieContent() {
-    console.log("content function")
     $('#content').find('.poster').attr('src', contentMovieChoice.Poster);
+
     $('#content').find('h4').text(contentMovieChoice.Title);
     $('#content').find('.rated').text("Rated: " + contentMovieChoice.Rated);
     $('#content').find('.released').text("Released: " + contentMovieChoice.Released);
@@ -135,6 +199,7 @@ function loadMovieContent() {
     $('#content').find('.description').text("Plot: " + contentMovieChoice.Plot);
         
     for (i = 0; i < 3; i++) {
+
         $("#ratings-list").find("li").eq(i).text(contentMovieChoice.Ratings[i].Source + ": " + contentMovieChoice.Ratings[i].Value);
 
     }
@@ -150,13 +215,4 @@ function apiCall(apiQuery, apiFunction) {
     }).then(apiFunction)
 }
 
-//Test function
-function testFunction(response) {
-    console.log(response);
-}
 
-// var tasteDiveQueryUrl = tasteDiveBaseQueryUrl+movieTitle
-// apiCall(tasteDiveQueryUrl, buildReturnedMovies);
-
-// var omdbQueryUrl = omdbBaseQueryUrl+movieTitle;
-// apiCall(omdbQueryUrl, testFunction);

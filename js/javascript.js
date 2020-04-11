@@ -9,6 +9,7 @@ var savedMovieHolder="";
 $('#search').keypress(function (event) {
     if (event.keyCode == 13 && $("#search").val() !="" ) {
         event.preventDefault();
+        M.toast({html: 'Working on it!', displayLength: 15000	});
         sessionStorage.removeItem("movieMeMovieArray")
         var movie = $.trim($("#search").val());
         while (savedMovieArray.length>5) {
@@ -111,9 +112,10 @@ $("#search-movie").on("click", function (movieSearch) {
 function buildReturnedMovies(response) {
     returnedMovies = response;
     if(returnedMovies.Similar.Results.length < 8){
+        M.Toast.dismissAll();
         M.toast({html: 'No Results Found'});
         savedMovieArray.shift();
-        if (savedMovieArray.length = 5) {
+        if (savedMovieArray.length >= 4 && savedMovieHolder != null) {
         savedMovieArray.push(savedMovieHolder);
         }
         sessionStorage.setItem('movieMeSavedMovieArray', JSON.stringify(savedMovieArray));

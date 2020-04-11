@@ -53,12 +53,12 @@
         <ul class="right hide-on-med-and-down">
           <li><a class="black-text" style="font-family:Impact" href="#!">Home</a></li>
           <li><a class=" black-text" style="font-family:Impact" href="movies.html">Movies</a></li>
-          <li><a class="dropdown-trigger black-text" style="font-family:Impact" href="#!"
-              data-target="mobile-drop">Genre<i class="material-icons right">arrow_drop_down</i></a></li>
+          <!-- <li><a class="dropdown-trigger black-text" style="font-family:Impact" href="#!"
+              data-target="mobile-drop">Genre<i class="material-icons right">arrow_drop_down</i></a></li> -->
 
 
           <!--Search bar in nav-->
-          <li>
+          <!-- <li>
             <div class="center row">
               <div class="col s12 ">
                 <div class="row" id="topbarsearch">
@@ -72,7 +72,7 @@
           </li>
         </ul>
       </div>
-    </nav>
+    </nav> -->
 
 
 
@@ -80,23 +80,37 @@
     <ul class="sidenav" id="mobile-nav">
       <li><a class="black-text" style="font-family:Impact" href="#!">Home</a></li>
       <li><a class=" black-text" style="font-family:Impact" href="movies.html">Movies</a></li>
-      <li><a class="dropdown-trigger black-text" style="font-family:Impact" href="content.html"
-          data-target="drop-genre">Genre<i class="material-icons right">arrow_drop_down</i></a></li>
+      <!-- <li><a class="dropdown-trigger black-text" style="font-family:Impact" href="content.html"
+          data-target="drop-genre">Genre<i class="material-icons right">arrow_drop_down</i></a></li> -->
     </ul>
   </header>
-
+  <div id="information" class="modal">
+    <div class="modal-content">
+      <h4>Information</h4>
+      <p>Welcome to MovieMe! Let's find something great to watch.</p>
+      <p>Search for any movie you like in the bar below. We'll show you a couple of choices that other users who enjoyed your movie also liked. We'll also keep track of your recent searches which can be added into a new search request to further refine your suggestions. </p>
+      <p>If we can't find anything matching your search request, we'll let you know. Make sure you check out the additional content from Youtube on our content page </p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Dismiss</a>
+    </div>
+  </div>
 
   <main class="valign-wrapper">
 
 
     <!--Main page search bar-->
     <div class="container ">
+      
       <div class="row">
         <div class = "col s12">
-          <h1 class="center-align" style="font-family:Impact">Movie<i class="medium material-icons">play_circle_filled</i>Me
+         
+          <h1 class="center-align" style="font-family:Impact">Movie<i class="medium material-icons">play_circle_filled</i>Me <button data-target="information" class="btn-flat modal-trigger center-align"><i class="material-icons large">info</i></button>
           </h1>
           <nav>
+            
             <div class="nav-wrapper">
+              
               <form class="grey lighten-3">
                 <div class="input-field">
                   <input id="search" type="search" required>
@@ -105,8 +119,8 @@
 
                   <!-- I've put "red-text" class to emphasize -->
                   <i class="material-icons pink-text">close</i>
-                </div>
-              </form>
+                </div>    
+              </form>    
             </div>
           </nav>
         </div>
